@@ -7,13 +7,24 @@
     new Question ("Пять свечей горело, две потухли. Сколько свечей осталось?", "2"),
 };
 
-
+Console.Write("Приветсвую в игре Гений и Дурак, перед началом предлагаю прдставиться!\n" +
+    "Введите имя: ");
+string userName = Console.ReadLine()!;
+string repeat = "ДА";
 Random rand = new Random();
-questions = questions.OrderBy(x => rand.Next()).ToList();
+while (repeat == "ДА")
+{
 
-int countsRightAnswers = StartGame(questions);
-Console.WriteLine($"Ваш диагноз: {ShowDiagnose(countsRightAnswers)}");
+    questions = questions.OrderBy(x => rand.Next()).ToList();
 
+    int countsRightAnswers = StartGame(questions);
+    Console.WriteLine($"К сожалению для Вас {userName}, игра закончилась и ваш диагноз: {ShowDiagnose(countsRightAnswers)}");
+
+
+    Console.WriteLine("Думаю, что Вы хотели бы повторить. Может стоит начать всё заново? \n" +
+        "Введите ДА, если хотите начать игру заново, или нажмите любую кнопку, чтобы завершить игру");
+    repeat = Console.ReadLine()?.ToUpper();
+}
 static string ShowDiagnose(int countsRightAnswers)
 {
     switch (countsRightAnswers)
