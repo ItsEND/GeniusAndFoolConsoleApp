@@ -1,10 +1,11 @@
 ﻿public class Question
 {
-    public Question(string quest, string answer)
+    public string Text { get; private set; }
+    public int Answer { get; private set; }
+
+    public Question(string question, int answer)
     {
-        Quest = quest;
+        Text = question;
         Answer = answer;
     }
-    public string Quest { get; private set; }
-    public string Answer { get; private set; }
 }
